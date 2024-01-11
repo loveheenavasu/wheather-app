@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useState } from 'react';
 
 export default function Page() {
-  const [location, setLocation] = useState('');
+  const [location, setLocation] = useState<string>('');
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -19,6 +19,7 @@ export default function Page() {
     [searchParams],
   );
   const handleRoute = () => {
+    if (location === '') return;
     router.push('/dashboard' + '?' + createQueryString('loc', location));
   };
   return (

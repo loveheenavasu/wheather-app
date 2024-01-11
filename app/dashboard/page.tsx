@@ -1,9 +1,19 @@
 import { Card } from '@/app/ui/dashboard/cards';
-import RevenueChart from '@/app/ui/dashboard/revenue-chart';
-import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
-import { getWeatherReport } from '@/app/lib/data';
+
+import {
+  fetchRevenue,
+  fetchLatestInvoices,
+  fetchCardData,
+  getWeatherReport,
+} from '@/app/lib/data';
+import { useContext } from 'react';
+import RevenueChart from '../ui/dashboard/air-quality';
+import LatestInvoices from '../ui/dashboard/current-forcast';
 
 export default async function Page(props: any) {
+  console.log(props.searchParams.loc, 'params');
+  // const location = GetData();
+  // console.log(location, 'finaltry');
   const report = await getWeatherReport(props.searchParams.loc);
   const lat = report.location.lat;
   const long = report.location.lon;
