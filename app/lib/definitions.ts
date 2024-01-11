@@ -25,18 +25,32 @@ export type Invoice = {
   // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
   status: 'pending' | 'paid';
 };
+export type AirQuality = {
+  co: number;
+  no2: number;
+  o3: number;
+  so2: number
+}
 
 export type Revenue = {
   month: string;
   revenue: number;
 };
-
+export type Condition = {
+  text: string;
+  condition: string;
+  image: string
+}
 export type LatestInvoice = {
   id: string;
   name: string;
   image_url: string;
   email: string;
   amount: string;
+  temp_c: string;
+  time: string;
+  wind_kph: string;
+  condition: Condition
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function

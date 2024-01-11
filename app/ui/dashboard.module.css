@@ -1,0 +1,6 @@
+.wrapper{
+    background:url('/dashboard-bg.jpg');
+    background-position:center;
+    background-size: cover;
+    /* overflow-y: auto; */
+}

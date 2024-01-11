@@ -1,16 +1,19 @@
+'use client';
 import {
   BanknotesIcon,
   ClockIcon,
   UserGroupIcon,
   InboxIcon,
+  MapPinIcon,
+  CloudIcon,
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-
+import TempIcon from '@/public/assets/tempIcon';
 const iconMap = {
-  collected: BanknotesIcon,
-  customers: UserGroupIcon,
-  pending: ClockIcon,
-  invoices: InboxIcon,
+  location: MapPinIcon,
+  condition: UserGroupIcon,
+  temp: TempIcon,
+  wind: CloudIcon,
 };
 
 export default async function CardWrapper() {
@@ -34,22 +37,45 @@ export function Card({
   title,
   value,
   type,
+  condition,
 }: {
   title: string;
   value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
+  type: 'wind' | 'temp' | 'location' | 'condition';
+  condition?: string;
 }) {
   const Icon = iconMap[type];
 
+  let backgroundImageUrl = '';
+
+  switch (condition) {
+    case 'Mist':
+      backgroundImageUrl = '/fog4.webp';
+      break;
+    case 'Sunny':
+      backgroundImageUrl = '/sunny.gif';
+      break;
+    // Add more cases as needed
+
+    default:
+      // Default background image or handle unknown condition
+      backgroundImageUrl = '';
+  }
   return (
-    <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
+    <div
+      style={{
+        background: 'rgba(220, 242, 241, 0.4)',
+        backgroundImage: `url(${backgroundImageUrl})`,
+      }}
+      className="rounded-xl p-2  text-white shadow-sm"
+    >
       <div className="flex p-4">
-        {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-        <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        {Icon ? <Icon className="h-5 w-5 text-white" /> : null}
+        <h3 className="ml-2 text-lg font-medium">{title}</h3>
       </div>
       <p
         className={`${lusitana.className}
-          truncate rounded-xl bg-white px-4 py-8 text-center text-2xl`}
+           truncate  rounded-xl px-4 py-8 text-center text-2xl`}
       >
         {value}
       </p>

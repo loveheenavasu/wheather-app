@@ -4,6 +4,7 @@ const {
   customers,
   revenue,
   users,
+  condition,
 } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
@@ -160,6 +161,42 @@ async function seedRevenue(client) {
   }
 }
 
+async function seedCondition(client) {
+  try {
+    // Create the "condition" table if it doesn't exist
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS condition (
+        condition VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NOT NULL
+      );
+    `;
+
+    console.log(`Created "condition" table`);
+
+    // Insert data into the "revenue" table
+    const insertedCondition = await Promise.all(
+      condition.map(
+        (rev) => client.sql`
+        INSERT INTO condition (condition, image)
+        VALUES (${rev.condition}, ${rev.image})
+
+
+      `,
+      ),
+    );
+
+    console.log(`Seeded ${insertedCondition.length} condition`);
+
+    return {
+      createTable,
+      condition: insertedCondition,
+    };
+  } catch (error) {
+    console.error('Error seeding condition:', error);
+    throw error;
+  }
+}
+
 async function main() {
   const client = await db.connect();
 
@@ -167,6 +204,7 @@ async function main() {
   await seedCustomers(client);
   await seedInvoices(client);
   await seedRevenue(client);
+  await seedCondition(client);
 
   await client.end();
 }

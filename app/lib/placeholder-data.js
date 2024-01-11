@@ -179,10 +179,100 @@ const revenue = [
   { month: 'Nov', revenue: 3000 },
   { month: 'Dec', revenue: 4800 },
 ];
-
+const condition = [
+  {
+    condition: 'Clear',
+    image: '/Sunny.png',
+  },
+  {
+    condition: 'Overcast',
+    image: '/mist.svg',
+  },
+  {
+    condition: 'Sunny',
+    image: '/Sunny.png',
+  },
+  {
+    condition: 'Mist',
+    image: '/mist.svg',
+  },
+  {
+    condition: 'Cloudy',
+    image: '/Cloud.png',
+  },
+  {
+    condition: 'Partly cloudy',
+    image: '/Cloud.png',
+  },
+  {
+    condition: 'Heavy rain',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Patchy rain possible',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Light rain',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Moderate rain',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Rain',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Light freezing rain',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Light drizzle',
+    image: '/rain.png',
+  },
+  {
+    condition: 'Blizzard',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Moderate snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Light snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Heavy snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Patch moderate snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Sleet',
+    image: '/sleet.png',
+  },
+  {
+    condition: 'Light sleet',
+    image: '/sleet.png',
+  },
+  {
+    condition: 'Heavy sleet',
+    image: '/sleet.png',
+  },
+];
 module.exports = {
   users,
   customers,
   invoices,
   revenue,
+  condition,
 };

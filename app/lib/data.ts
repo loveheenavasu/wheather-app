@@ -7,8 +7,11 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
+  Condition
 } from './definitions';
 import { formatCurrency } from './utils';
+import { unstable_noStore } from 'next/cache';
+
 
 export async function fetchRevenue() {
   // Add noStore() here prevent the response from being cached.
@@ -29,6 +32,16 @@ export async function fetchRevenue() {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
+  }
+}
+export async function fetchCondition() {
+  unstable_noStore()
+  try {
+    const data = await sql<Condition>`SELECT * FROM condition`;
+    return data.rows;
+  } catch (error) {
+    console.error("Database Error", error);
+    throw new Error("Failed to fetch condition data.")
   }
 }
 
@@ -186,6 +199,37 @@ export async function fetchCustomers() {
     throw new Error('Failed to fetch all customers.');
   }
 }
+export async function getWeatherReport(location: string) {
+  const apiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${location}&days=1&aqi=yes&alerts=no`;
+
+  // const apiUrl = 'https://api.weatherapi.com/v1/forecast.json?key=3bbbb1a744824c319da102139240801&q=india&days=1&aqi=no&alerts=no';
+
+  try {
+    const response = await fetch(apiUrl, {
+      headers: {
+        'Authorization': 'Bearer 65573dc2366f76c3fc764115',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    // Check if the response status is OK (status code 200-299)
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
+
+    // console.log("log response === ", response)
+
+    // Parse the response body as JSON and return the data
+    const data = await response.json();
+    // console.log("Weather Data:", data);
+    return data;
+  } catch (error) {
+    // Handle any errors that occurred during the fetch
+    console.error("Fetch Error:", error);
+    throw error; // Rethrow the error to propagate it to the calling code
+  }
+}
+
 
 export async function fetchFilteredCustomers(query: string) {
   try {
