@@ -11,9 +11,6 @@ import RevenueChart from '../ui/dashboard/air-quality';
 import LatestInvoices from '../ui/dashboard/current-forcast';
 
 export default async function Page(props: any) {
-  console.log(props.searchParams.loc, 'params');
-  // const location = GetData();
-  // console.log(location, 'finaltry');
   const report = await getWeatherReport(props.searchParams.loc);
   const lat = report.location.lat;
   const long = report.location.lon;

@@ -197,6 +197,10 @@ const condition = [
     image: '/mist.svg',
   },
   {
+    condition: 'Freezing fog',
+    image: '/mist.svg',
+  },
+  {
     condition: 'Cloudy',
     image: '/Cloud.png',
   },
@@ -238,6 +242,14 @@ const condition = [
   },
   {
     condition: 'Snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Blowing snow',
+    image: '/snow.png',
+  },
+  {
+    condition: 'Light snow showers',
     image: '/snow.png',
   },
   {

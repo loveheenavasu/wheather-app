@@ -16,7 +16,6 @@ const Forcast = async ({
   condition: string;
 }) => {
   const conditionData = await fetchCondition();
-  let ImageUrl = '';
 
   let CurrentCondition = conditionData.find(
     (item) => item.condition === condition,
@@ -48,7 +47,7 @@ const Forcast = async ({
           <p>{CurrentCondition?.condition}</p>
         </div>
         <div className="flex  justify-between">
-          <Image src="/wind.png" width={20} height={15} alt="wind" />
+          <Image src="/winds.png" width={20} height={15} alt="wind" />
           <p>{wind}/kph</p>
         </div>
       </div>
