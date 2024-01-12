@@ -52,9 +52,9 @@ export function Card({
     case 'Mist':
       backgroundImageUrl = '/fog4.webp';
       break;
-    case 'Sunny':
-      backgroundImageUrl = '/sunny.gif';
-      break;
+    // case 'Sunny':
+    //   backgroundImageUrl = '/sunny.gif';
+    //   break;
     // Add more cases as needed
 
     default:
