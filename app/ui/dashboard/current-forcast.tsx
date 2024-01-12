@@ -36,11 +36,12 @@ export default async function LatestInvoices({
         className="flex  flex-col	 justify-between	  gap-4 overflow-auto rounded-xl bg-gray-50 p-4"
       >
         {/* NOTE: comment in this code when you get to this point in the course */}
-        {latestInvoices.map((item) => {
+        {latestInvoices.map((item, index) => {
           let hours = getDate(item.time);
 
           return (
             <Forcast
+              key={index}
               hours={hours}
               temp={item.temp_c}
               wind={item.wind_kph}
