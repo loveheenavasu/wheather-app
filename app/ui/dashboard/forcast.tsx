@@ -20,6 +20,7 @@ const Forcast = async ({
   let CurrentCondition = conditionData.find(
     (item) => item.condition === condition,
   );
+  let time = parseInt(hours) < 12 ? 'am' : 'pm';
 
   return (
     <div
@@ -28,7 +29,9 @@ const Forcast = async ({
       }}
       className={`${lusitana.className} rounded-xl p-2 text-center	 text-white shadow-sm`}
     >
-      <p>Time - {hours}</p>
+      <p>
+        Time - {hours} {time}
+      </p>
       <div className="relative flex flex-col justify-between gap-5 p-2 ">
         <div className="flex  justify-between">
           <TempIcon />
@@ -39,7 +42,11 @@ const Forcast = async ({
           className=" absolute left-2/4 top-2/4 flex  flex-col  items-center "
         >
           <Image
-            src={CurrentCondition?.image || ''}
+            src={
+              parseInt(hours) > 18
+                ? '/night.png'
+                : CurrentCondition?.image || ''
+            }
             width={50}
             height={50}
             alt="condition"
