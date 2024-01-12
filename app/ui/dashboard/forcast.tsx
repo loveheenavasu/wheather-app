@@ -36,7 +36,7 @@ const Forcast = async ({
         </div>
         <div
           style={{ transform: 'translate(-50%, -50%)' }}
-          className=" absolute left-2/4 top-2/4 flex flex-col "
+          className=" absolute left-2/4 top-2/4 flex  flex-col  items-center "
         >
           <Image
             src={CurrentCondition?.image || ''}
@@ -46,7 +46,7 @@ const Forcast = async ({
           />
           <p>{CurrentCondition?.condition}</p>
         </div>
-        <div className="flex  justify-between">
+        <div className="flex justify-between">
           <Image src="/winds.png" width={20} height={15} alt="wind" />
           <p>{wind}/kph</p>
         </div>
